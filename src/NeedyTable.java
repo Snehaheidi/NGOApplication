@@ -15,7 +15,7 @@ public class NeedyTable
             Statement statement = conn.createStatement();
             String sql = "CREATE DATABASE NEEDYDETAILS";
             statement.executeUpdate(sql);
-            System.out.println("DataBase Successfully created..");
+            System.out.println("DataBase Successfully created...");
         } catch (SQLException e) {
             e.printStackTrace();
         }

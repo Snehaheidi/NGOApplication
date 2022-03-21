@@ -8,7 +8,7 @@ public class NGOMain
         int category;
         System.out.println("\t\t HEARTY WELCOME TO OUR WEBSITE ");
         System.out.println("\t\t MAY I KNOW HOW MAY WE HELP YOU ");
-        System.out.println("*************** CATEGORIES *************");
+        System.out.println("**************** CATEGORIES **************");
         System.out.println("\t (1) VOLUNTEER \n\t (2) DONOR \n\t (3) NEEDY PEOPLE");
         System.out.println("****************************************");
         System.out.println("Enter the category you want to enter : ");

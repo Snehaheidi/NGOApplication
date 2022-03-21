@@ -59,7 +59,7 @@ public class Donor implements NGODetails
         int option;
         System.out.println("-----------OPTIONS-----------");
         System.out.println("\t (1) GOODS \n\t (2) MONEY \n\t (3) GOODS AND MONEY");
-        System.out.println("-----------------------------");
+        System.out.println("-------------------------------");
         System.out.println("Enter your choice : ");
         option = input.nextInt();
         input.nextLine();

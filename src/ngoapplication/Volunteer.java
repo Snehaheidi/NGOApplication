@@ -79,7 +79,7 @@ public class Volunteer implements NGODetails
         }
         volunteer_Id=volunteer_Id+ph_number.charAt(10-1);
         volunteer_Id = "NGO-V"+volunteer_Id;
-        System.out.println("----------YOU HAVE REGISTERED SUCCESSFULLY------------");
+        System.out.println("------------YOU HAVE REGISTERED SUCCESSFULLY------------");
         System.out.println("\t Name\t : "+first_name+" "+last_name);
         System.out.println("\t Register Number : "+volunteer_Id);
         System.out.println("-------------------------------------------------------");
