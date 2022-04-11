@@ -1,19 +1,18 @@
 package ngoapplication;
 import com.location.Location;
-
 import java.sql.*;
 import java.util.Scanner;
-
 public class Volunteer implements NGODetails
 {
-    static final String DB_URL = "jdbc:mysql://localhost/VOLUNTERDETAILS";
+    static final String DB_URL = "jdbc:mysql://localhost/NGO";
     static final String USER = "root";
     static final String PASS = "root";
     String first_name,last_name,city,ph_number,availability,office,gender;
     String volunteer_Id="";
     int age;
-    public void getPersonalDetails() {
-        Scanner input = new Scanner(System.in);
+    Scanner input = new Scanner(System.in);
+    public void getPersonalDetails()
+    {
         System.out.println("Enter your First Name : ");
         first_name = input.nextLine();
         System.out.println("Enter your Last Name : ");
@@ -53,7 +52,7 @@ public class Volunteer implements NGODetails
             default:
                 System.exit(0);
         }
-        System.out.println("Your Work Location is : "+office);
+        //System.out.println("Your Work Location is : "+office);
     }
      public void idGeneration()
     {
@@ -79,23 +78,43 @@ public class Volunteer implements NGODetails
         }
         volunteer_Id=volunteer_Id+ph_number.charAt(10-1);
         volunteer_Id = "NGO-V"+volunteer_Id;
-        System.out.println("------------YOU HAVE REGISTERED SUCCESSFULLY------------");
-        System.out.println("\t Name\t : "+first_name+" "+last_name);
-        System.out.println("\t Register Number : "+volunteer_Id);
-        System.out.println("-------------------------------------------------------");
+          System.out.println("\t Your Register Number : "+volunteer_Id);
+         System.out.println("------------YOU HAVE REGISTERED SUCCESSFULLY-------------");
     }
-    public void display()
-    {
-        try
-        {
+    public void display() {
+        try {
             Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
             Statement statement = conn.createStatement();
-            String sql = "Insert into voluntertable values(\""+volunteer_Id+"\",\""+first_name +"\",\""+last_name +"\","+age+",\""+gender+"\",\""+ph_number+"\",\""+city+"\",\""+availability+"\",\""+office+"\")";
+            String sql = "Insert into volunteer_Info values(\"" + volunteer_Id + "\",\"" + first_name + "\",\"" + last_name + "\"," + age + ",\"" + gender + "\",\"" + ph_number + "\",\"" + city + "\",\"" + availability + "\",\"" + office + "\")";
             statement.executeUpdate(sql);
-            System.out.println("Thank You...!");
+            System.out.println("********Thank You!********");
         } catch (SQLException e) {
             e.printStackTrace();
+        }
     }
+    public void view()
+    {
+        String value;
+        System.out.println("Enter your Volunteer_ID : ");
+        value = input.nextLine();
+        try {
+            Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            Statement statement = conn.createStatement();
+            System.out.println("Your Details");
+            String sql1 ="select * from NGO.volunteer_Info where Volunteer_Id = '"+value+"'";
+            ResultSet resultSet = statement.executeQuery(sql1);
+            while (resultSet.next())
+            {
+                System.out.println("Your Volunteer ID is : "+resultSet.getString("Volunteer_Id"));
+                System.out.println("Name  : " +resultSet.getString("First_name")+" "+resultSet.getString("Last_name"));
+                System.out.println("City  : "+resultSet.getString("City"));
+                System.out.println("Your Work Location is :"+resultSet.getString("Work_Location"));
+                System.out.println("Availability : "+resultSet.getString("Availability"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+         }
+        }
 }
-}
+
 

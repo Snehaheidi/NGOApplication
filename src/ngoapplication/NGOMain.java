@@ -17,10 +17,20 @@ public class NGOMain
         {
             case 1:
                 Volunteer v=new Volunteer();
-                v.getPersonalDetails();
-                v.idGeneration();
-                v.display();
-                NGODetails.end();
+                System.out.println("(1) You Now Register \t (2) Already Register only view");
+                int choice = s.nextInt();
+                switch (choice)
+                {
+                    case 1:
+                    v.getPersonalDetails();
+                    v.idGeneration();
+                    v.display();
+                    NGODetails.end();
+                    break;
+                    case 2:
+                        v.view();
+                        break;
+                }
                 break;
             case 2:
                 Donor d = new Donor();

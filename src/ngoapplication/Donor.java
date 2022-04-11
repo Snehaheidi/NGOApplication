@@ -9,12 +9,12 @@ import java.util.*;
 public class Donor implements NGODetails
 {
     Scanner input=new Scanner(System.in);
-    String DB_URL = "jdbc:mysql://localhost/DONORDETAILS";
+    String DB_URL = "jdbc:mysql://localhost/NGO";
     final String USER = "root";
     final String PASS = "root";
     public String first_name,last_name,city,gender,item,office,donor_ID;
     public double amount;
-    int quantity,age;
+    int quantity,age,D_Id=1;
     String mobile_number;
     public void getPersonalDetails()
     {
@@ -50,9 +50,9 @@ public class Donor implements NGODetails
         donor_ID=Integer.toString(rn);
         donor_ID="NGO-D"+donor_ID;
         System.out.println("----------YOU HAVE REGISTERED SUCCESSFULLY-----------");
-        System.out.println("\t Name\t \t\t : "+first_name+" "+last_name);
         System.out.println("\t Register Number : "+donor_ID);
-        System.out.println("------------------------------------------------------");
+//      System.out.println("------------------------------------------------------");
+//      System.out.println("\t Name\t \t\t : "+first_name+" "+last_name);
     }
     public void requirement()
     {
@@ -133,9 +133,11 @@ public class Donor implements NGODetails
             {
                 Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
                 Statement statement = conn.createStatement();
-                String sql = "INSERT INTO Donor_Info VALUES(\""+ donor_ID+"\",\""+first_name+"\",\""+last_name+"\",\""+age+"\",\""+gender+"\", \""+mobile_number+"\",\""+city+"\", \""+item+"\",\""+amount+"\",\""+office+"\")";
+                String sql = "INSERT INTO Donor VALUES(\""+donor_ID+"\",\""+first_name+"\",\""+last_name+"\",\""+age+"\",\""+mobile_number+"\",\""+city+"\")";
+                String sql1 = "INSERT INTO Donor_Send VALUES(\""+D_Id+"\",\""+item+"\",\""+amount+"\",\""+office+"\",\""+donor_ID+"\")";
                 statement.executeUpdate(sql);
-                System.out.println("Thank You!");
+                statement.executeUpdate(sql1);
+                System.out.println("Thank You....!");
             } catch (SQLException e) {
                 e.printStackTrace();
             }

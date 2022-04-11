@@ -2,15 +2,14 @@ package ngoapplication;
 import com.location.Location;
 import java.sql.*;
 import java.util.*;
-
 public class Needy implements NGODetails
 {
         Scanner input=new Scanner(System.in);
-        String DB_URL = "jdbc:mysql://localhost/NEEDYDETAILS";
+        String DB_URL = "jdbc:mysql://localhost/NGO";
         final String USER = "root";
         final String PASS = "root";
         String first_name,last_name,city,needy_ID,amount;
-        String item,office,mobile_number,gender,occupation,bank_Name,acc_name,ifsc,branch,upi_id,acc_no;
+        String item,office,mobile_number,occupation,bank_Name,acc_name,ifsc,branch,upi_id,acc_no;
         int quantity,age;
         public void getPersonalDetails()
         {
@@ -21,8 +20,6 @@ public class Needy implements NGODetails
             System.out.println("Enter your Age : ");
             age=input.nextInt();
             input.nextLine();
-            System.out.println("Enter your Gender : ");
-            gender=input.nextLine();
             System.out.println("Enter your Occupation : ");
             occupation=input.nextLine();
             System.out.println("Enter Phone Number : ");
@@ -48,9 +45,7 @@ public class Needy implements NGODetails
             System.out.println("Name: "+first_name+" "+last_name);
             System.out.println("Registration No: "+needy_ID);
             System.out.println("------------------------------------------------------");
-
         }
-
         public void requirement()
         {
             int option;
@@ -160,10 +155,14 @@ public class Needy implements NGODetails
             {
                 Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
                 Statement statement = conn.createStatement();
-                String sql = "INSERT INTO Needy_Peoples VALUES('"+needy_ID+"','"+first_name+"','"+last_name+"',"+age+",'"+gender+"','"+occupation+"','"+mobile_number+"','"+city+"','"+item+"','"+amount+"','"+acc_name+"','"+acc_no+"','"+ifsc+"','"+branch+"','"+bank_Name+"','"+upi_id+"','"+office+"')";
+                String sql = "INSERT INTO Needy_People VALUES('"+needy_ID+"','"+first_name+"','"+last_name+"',"+age+",'"+occupation+"','"+mobile_number+"','"+city+"')";
+                String sql1 = "INSERT INTO Needy_Receive VALUES('"+item+"','"+amount+"','"+acc_name+"','"+acc_no+"','"+ifsc+"','"+branch+"','"+bank_Name+"','"+upi_id+"','"+office+"','"+needy_ID+"')";
                 statement.executeUpdate(sql);
-                System.out.println("Thank You!");
-            } catch (SQLException e) {
+                statement.executeUpdate(sql1);
+                System.out.println("Thank You...!");
+            }
+            catch (SQLException e)
+            {
                 e.printStackTrace();
             }
         }
