@@ -17,7 +17,7 @@ public class NGOMain
         {
             case 1:
                 Volunteer v=new Volunteer();
-                System.out.println("(1) You Now Register \t (2) Already Register only view");
+                System.out.println("(1)You Now Register \t (2) Already Register only view");
                 int choice = s.nextInt();
                 switch (choice)
                 {

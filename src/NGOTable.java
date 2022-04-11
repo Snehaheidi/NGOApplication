@@ -15,7 +15,7 @@ public class NGOTable
             Statement statement = conn.createStatement();
             String sql = "CREATE DATABASE NGO";
             statement.executeUpdate(sql);
-            System.out.println("DataBase Successfully created.....");
+            System.out.println("DataBase Successfully created...");
         } catch (SQLException e) {
             e.printStackTrace();
         }

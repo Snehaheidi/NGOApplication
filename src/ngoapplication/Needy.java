@@ -87,9 +87,9 @@ public class Needy implements NGODetails
         }
         public void modeOfTransaction()
         {
-            System.out.println("----------------- OPTIONS --------------------");
+            System.out.println("----------------- OPTIONS -------------------");
             System.out.println("\n1)Bank \n2)UPI \n3)Cash");
-            System.out.println("-----------------------------------------------");
+            System.out.println("----------------------------------------------");
             System.out.println("Enter your Option : ");
             String option1=input.nextLine();
             switch (option1)

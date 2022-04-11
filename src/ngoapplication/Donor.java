@@ -137,7 +137,7 @@ public class Donor implements NGODetails
                 String sql1 = "INSERT INTO Donor_Send VALUES(\""+D_Id+"\",\""+item+"\",\""+amount+"\",\""+office+"\",\""+donor_ID+"\")";
                 statement.executeUpdate(sql);
                 statement.executeUpdate(sql1);
-                System.out.println("Thank You....!");
+                System.out.println("Thank You...!");
             } catch (SQLException e) {
                 e.printStackTrace();
             }
