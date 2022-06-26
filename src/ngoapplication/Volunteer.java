@@ -99,7 +99,7 @@ public class Volunteer implements NGODetails
         try {
             Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
             Statement statement = conn.createStatement();
-            System.out.println("Your Details");
+            System.out.println("Your Details ");
             String sql1 ="select * from NGO.volunteer_Info where Volunteer_Id = '"+value+"'";
             ResultSet resultSet = statement.executeQuery(sql1);
             while (resultSet.next())

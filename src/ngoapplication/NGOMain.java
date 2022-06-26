@@ -46,7 +46,7 @@ public class NGOMain {
                 }
                 case 3:
                     Needy np = new Needy();
-                    System.out.println("(1) You Now Register \t (2) Already Register only view");
+                    System.out.println("(1)You Now Register \t (2) Already Register only view");
                     int choice2 = s.nextInt();
                     switch (choice2)
                     {

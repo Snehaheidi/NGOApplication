@@ -181,8 +181,8 @@ public class Needy implements NGODetails
             {
                 System.out.println("-------------------------------------------------------------");
                 System.out.println("Your Needy ID is : "+resultSet1.getString("Needy_Id"));
-                System.out.println("Name  : " +resultSet1.getString("First_name")+""+resultSet1.getString("Last_name"));
-                System.out.println("City  : "+resultSet1.getString("City"));
+                System.out.println("Name   : " +resultSet1.getString("First_name")+""+resultSet1.getString("Last_name"));
+                System.out.println("City   : "+resultSet1.getString("City"));
             }
             String sql1 ="select * from NGO.needy_receive where Needy_Id = '"+value+"'";
             ResultSet resultSet = statement.executeQuery(sql1);

@@ -63,9 +63,9 @@ public class Donor implements NGODetails
         String date;
         switch (option) {
             case 1:
-                    System.out.println("Enter the Item : ");
+                    System.out.println("Enter the Item  : ");
                     item = input.nextLine();
-                    System.out.println("Enter the Quantity : ");
+                    System.out.println("Enter the Quantity  : ");
                     quantity = input.nextInt();
                     input.nextLine();
                     System.out.println("Approximate Date of sending Goods (DD/MM/YYYY) : ");

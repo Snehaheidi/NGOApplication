@@ -10,15 +10,15 @@ public class NGOTable
         String DB_URL = "jdbc:mysql://localhost/";
         final String USER = "root";
         final String PASS = "root";
-//        try {
-//            Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
-//            Statement statement = conn.createStatement();
-//            String sql = "CREATE DATABASE NGO";
-//            statement.executeUpdate(sql);
-//            System.out.println("DataBase Successfully created...");
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            Statement statement = conn.createStatement();
+            String sql = "CREATE DATABASE NGO";
+            statement.executeUpdate(sql);
+            System.out.println("DataBase Successfully created...");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 //        try {
 //            DB_URL +="NGO";
 //            Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
