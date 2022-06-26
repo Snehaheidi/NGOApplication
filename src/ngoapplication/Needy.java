@@ -65,7 +65,6 @@ public class Needy implements NGODetails
                         quantity = input.nextInt();
                     System.out.println("We request you to collect the goods from our nearest hub "+office);
                     break;
-
                 case 2:
                     amountNeeded();
                     modeOfTransaction();
@@ -156,7 +155,7 @@ public class Needy implements NGODetails
                 Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
                 Statement statement = conn.createStatement();
                 String sql = "INSERT INTO Needy_People VALUES('"+needy_ID+"','"+first_name+"','"+last_name+"',"+age+",'"+occupation+"','"+mobile_number+"','"+city+"')";
-                String sql1 = "INSERT INTO Needy_Receive VALUES('"+item+"','"+amount+"','"+acc_name+"','"+acc_no+"','"+ifsc+"','"+branch+"','"+bank_Name+"','"+upi_id+"','"+office+"','"+needy_ID+"')";
+                String sql1 = "INSERT INTO Needy_Receive (Needy_Id,Item ,Amount ,Account_Holder_Name,Account_Number,IFSC_Code,Branch_Name,Bank_Name,UPI_ID,Receive_Location) VALUES('"+needy_ID+"','"+item+"','"+amount+"','"+acc_name+"','"+acc_no+"','"+ifsc+"','"+branch+"','"+bank_Name+"','"+upi_id+"','"+office+"')";
                 statement.executeUpdate(sql);
                 statement.executeUpdate(sql1);
                 System.out.println("Thank You...!");
@@ -166,4 +165,35 @@ public class Needy implements NGODetails
                 e.printStackTrace();
             }
         }
+
+    public void view()
+    {
+        String value;
+        System.out.println("Enter your Needy_ID : ");
+        value = input.nextLine();
+        try {
+            Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            Statement statement = conn.createStatement();
+            System.out.println("Your Details Here..");
+            String sql2 ="select * from NGO.needy_people where Needy_Id = '"+value+"'";
+            ResultSet resultSet1 = statement.executeQuery(sql2);
+            while(resultSet1.next())
+            {
+                System.out.println("-------------------------------------------------------------");
+                System.out.println("Your Needy ID is : "+resultSet1.getString("Needy_Id"));
+                System.out.println("Name  : " +resultSet1.getString("First_name")+""+resultSet1.getString("Last_name"));
+                System.out.println("City  : "+resultSet1.getString("City"));
+            }
+            String sql1 ="select * from NGO.needy_receive where Needy_Id = '"+value+"'";
+            ResultSet resultSet = statement.executeQuery(sql1);
+            while (resultSet.next())
+            {
+                System.out.println("Your Received Location is :"+resultSet.getString("Receive_Location"));
+                System.out.println("--------------------------------------------------------------");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
+

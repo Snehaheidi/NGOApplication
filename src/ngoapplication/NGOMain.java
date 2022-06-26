@@ -1,10 +1,8 @@
 package ngoapplication;
 import java.util.*;
-public class NGOMain
-{
-    public static void main(String args[])
-    {
-        Scanner s=new Scanner(System.in);
+public class NGOMain {
+    public static void main(String args[]) {
+        Scanner s = new Scanner(System.in);
         int category;
         System.out.println("\t\t HEARTY WELCOME TO OUR WEBSITE ");
         System.out.println("\t\t MAY I KNOW HOW MAY WE HELP YOU ");
@@ -12,21 +10,19 @@ public class NGOMain
         System.out.println("\t (1) VOLUNTEER \n\t (2) DONOR \n\t (3) NEEDY PEOPLE");
         System.out.println("****************************************");
         System.out.println("Enter the category you want to enter : ");
-        category=s.nextInt();
-        switch(category)
-        {
+        category = s.nextInt();
+        switch (category) {
             case 1:
-                Volunteer v=new Volunteer();
-                System.out.println("(1)You Now Register \t (2) Already Register only view");
+                Volunteer v = new Volunteer();
+                System.out.println("(1) You Now Register \t (2) Already Register only view");
                 int choice = s.nextInt();
-                switch (choice)
-                {
+                switch (choice) {
                     case 1:
-                    v.getPersonalDetails();
-                    v.idGeneration();
-                    v.display();
-                    NGODetails.end();
-                    break;
+                        v.getPersonalDetails();
+                        v.idGeneration();
+                        v.display();
+                        NGODetails.end();
+                        break;
                     case 2:
                         v.view();
                         break;
@@ -34,23 +30,40 @@ public class NGOMain
                 break;
             case 2:
                 Donor d = new Donor();
-                d.getPersonalDetails();
-                d.idGeneration();
-                d.requirement();
-                d.display();
-                NGODetails.end();
-                break;
-            case 3:
-                Needy np = new Needy();
-                np.getPersonalDetails();
-                np.idGeneration();
-                np.requirement();
-                np.display();
-                NGODetails.end();
-                break;
-            default:
-                System.out.println("Please enter a valid category");
-                break;
-        }
+                System.out.println("(1) You Now Register \t (2) Already Register only view");
+                int choice1 = s.nextInt();
+                switch (choice1) {
+                    case 1:
+                        d.getPersonalDetails();
+                        d.idGeneration();
+                        d.requirement();
+                        d.display();
+                        NGODetails.end();
+                        break;
+                    case 2:
+                        d.view();
+                        break;
+                }
+                case 3:
+                    Needy np = new Needy();
+                    System.out.println("(1) You Now Register \t (2) Already Register only view");
+                    int choice2 = s.nextInt();
+                    switch (choice2)
+                    {
+                        case 1:
+                            np.getPersonalDetails();
+                            np.idGeneration();
+                            np.requirement();
+                            np.display();
+                            NGODetails.end();
+                            break;
+                        case 2:
+                            np.view();
+                            break;
+                    }
+                    default:
+                        System.out.println("Please enter a valid category");
+                        break;
+                }
+          }
     }
-}

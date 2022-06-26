@@ -35,7 +35,6 @@ public class Donor implements NGODetails
         if(mobile_number.length()!=10)
         {
             System.out.println("Invalid Mobile Number....Please enter a valid mobile number");
-            System.exit(0);
         }
         System.out.println("Enter current City : ");
         city=input.nextLine();
@@ -51,8 +50,6 @@ public class Donor implements NGODetails
         donor_ID="NGO-D"+donor_ID;
         System.out.println("----------YOU HAVE REGISTERED SUCCESSFULLY-----------");
         System.out.println("\t Register Number : "+donor_ID);
-//      System.out.println("------------------------------------------------------");
-//      System.out.println("\t Name\t \t\t : "+first_name+" "+last_name);
     }
     public void requirement()
     {
@@ -94,7 +91,6 @@ public class Donor implements NGODetails
                     break;
             default:
                 System.out.println("Invalid Option >>>>>> Please Enter valid option");
-                System.exit(0);
                 break;
         }
     }
@@ -122,7 +118,6 @@ public class Donor implements NGODetails
                     break;
                 default:
                     System.out.println("Invalid Option >>>>>> Please Enter valid option");
-                    System.exit(0);
                     break;
 
             }
@@ -134,7 +129,7 @@ public class Donor implements NGODetails
                 Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
                 Statement statement = conn.createStatement();
                 String sql = "INSERT INTO Donor VALUES(\""+donor_ID+"\",\""+first_name+"\",\""+last_name+"\",\""+age+"\",\""+mobile_number+"\",\""+city+"\")";
-                String sql1 = "INSERT INTO Donor_Send VALUES(\""+D_Id+"\",\""+item+"\",\""+amount+"\",\""+office+"\",\""+donor_ID+"\")";
+                String sql1 = "INSERT INTO Donor_Send (Item,Amount,Send_Location,donor_ID) VALUES(\""+item+"\",\""+amount+"\",\""+office+"\",\""+donor_ID+"\")";
                 statement.executeUpdate(sql);
                 statement.executeUpdate(sql1);
                 System.out.println("Thank You...!");
@@ -142,4 +137,8 @@ public class Donor implements NGODetails
                 e.printStackTrace();
             }
         }
+    public void view()
+    {
+
+    }
 }

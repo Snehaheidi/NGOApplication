@@ -52,7 +52,6 @@ public class Volunteer implements NGODetails
             default:
                 System.exit(0);
         }
-        //System.out.println("Your Work Location is : "+office);
     }
      public void idGeneration()
     {
